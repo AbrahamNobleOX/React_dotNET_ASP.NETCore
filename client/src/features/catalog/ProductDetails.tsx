@@ -6,13 +6,12 @@ import {
   TableCell,
   TableContainer,
   TableRow,
-  TextField,
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios"; // Import the axios library
 import { Product } from "../../app/models/product";
+import agent from "../../app/api/agent";
 
 export default function ProductDetails() {
   const { id } = useParams<{ id: string }>();
@@ -20,16 +19,16 @@ export default function ProductDetails() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/api/products/${id}`)
-      .then((response) => setProduct(response.data))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
+    id &&
+      agent.Catalog.details(parseInt(id))
+        .then((response) => setProduct(response))
+        .catch((error) => console.log(error))
+        .finally(() => setLoading(false));
   }, [id]);
 
   if (loading) return <div>Loading...</div>;
 
-  if (!product) return <div>Not found</div>;
+  if (!product) return <div>Product Not Found</div>;
 
   return (
     <>

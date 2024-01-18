@@ -1,5 +1,6 @@
 // Create a new instance of WebApplicationBuilder using the arguments passed to the application
 using API.Data;
+using API.Middleware;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +28,9 @@ builder.Services.AddCors(); // Add CORS services to the DI container
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+// Add middleware to handle exceptions and return a response with a 500 Internal Server Error status code
+app.UseMiddleware<ExceptionMiddleware>();
 
 // Check if the app is in development mode
 if (app.Environment.IsDevelopment())
@@ -57,7 +61,6 @@ app.MapGet("/", () =>
 .WithName("Root")
 // Enable OpenAPI documentation for this endpoint
 .WithOpenApi();
-
 
 var scope = app.Services.CreateScope(); // Create a new scope for Dependency Injection (DI)
 var context = scope.ServiceProvider.GetRequiredService<StoreContext>(); // Get the StoreContext from the DI container

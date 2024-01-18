@@ -5,17 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [ApiController] // This attribute tells ASP.NET Core that this class is an API controller
-    [Route("api/[controller]")] // This attribute tells ASP.NET Core that this controller is accessible via the /api/products route
-
-    public class ProductsController : ControllerBase // This class inherits from ControllerBase, which is a base class for API controllers in ASP.NET Core
+    public class ProductsController : BaseApiController // This class inherits from ControllerBase, which is a base class for API controllers in ASP.NET Core
     {
         // This is a constructor for the ProductsController class. It takes a StoreContext object as a parameter.
         private readonly StoreContext context;
         public ProductsController(StoreContext context)
         {
             this.context = context; // The constructor assigns the StoreContext object to the context field
-
         }
 
         [HttpGet] // This attribute tells ASP.NET Core that this method is accessible via the HTTP GET verb
