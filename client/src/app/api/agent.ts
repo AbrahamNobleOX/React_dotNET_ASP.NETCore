@@ -1,4 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
+import { toast } from "react-toastify";
+import { router } from "../router/Routes";
 
 // set the base url for the api
 axios.defaults.baseURL = "http://localhost:3001/api/";
@@ -12,7 +14,40 @@ axios.interceptors.response.use(
     return response;
   },
   (error: AxiosError) => {
-    console.log("caught by interceptor");
+    // destructure the data and status from the error response
+    const { data, status } = error.response as AxiosResponse;
+
+    switch (status) {
+      case 400: // there's two 400 errors in the api, one is for bad request and the other is for validation errors
+        // check if there's any "errors" object in the data
+        if (data.errors) {
+          const modelStateErrors: string[] = []; // create an array of strings
+
+          // loop through the errors object and push the errors to the string array
+          for (const key in data.errors) {
+            if (data.errors[key]) {
+              modelStateErrors.push(data.errors[key]);
+            }
+          }
+
+          // throw the array of strings
+          throw modelStateErrors.flat();
+        }
+        toast.error(data.title);
+        break;
+      case 401:
+        toast.error(data.title);
+        break;
+      // case 403:
+      //   toast.error("You are not allowed to do that!");
+      //   break;
+      case 500:
+        router.navigate("/server-error", { state: { error: data } }); // navigate to the server error page and pass the error data
+        break;
+      default:
+        break;
+    }
+
     return Promise.reject(error.response);
   }
 );
