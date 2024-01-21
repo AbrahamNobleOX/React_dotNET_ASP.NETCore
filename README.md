@@ -36,3 +36,15 @@ Do "dotnet run" inside API folder
 
 microsoft.entityframeworkcore.sqlite
 microsoft.entityframeworkcore.design
+
+https://json2ts.dev/
+https://learn.microsoft.com/en-us/ef/core/modeling/relationships
+https://mui.com/material-ui/react-switch/
+https://reactrouter.com/en/main/start/tutorial
+https://legacy.reactjs.org/docs/create-a-new-react-app.html
+https://react.dev/learn/typescript
+https://code.visualstudio.com/docs/editor/github-copilot
+https://www.npmjs.com/package/react-toastify
+https://jwt.ms/
+
+https://www.youtube.com/results?search_query=creating+a+npm+package

@@ -10,5 +10,7 @@ namespace API.Data
         }
 
         public DbSet<Product> Products { get; set; } // Expose the Products table as a DbSet property
+
+        public DbSet<Basket> Baskets { get; set; } // Expose the Baskets table as a DbSet property
     }
 }
