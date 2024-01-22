@@ -30,7 +30,7 @@ dotnet sln add API | - This will add the solution file to the API project
 
 # To run
 
-Do "dotnet run" inside API folder
+Do "dotnet run" inside API folder or "dotnet watch --no-hot-reload" to have it keep track of changes
 
 # Package installation with nuget
 
@@ -48,3 +48,6 @@ https://www.npmjs.com/package/react-toastify
 https://jwt.ms/
 
 https://www.youtube.com/results?search_query=creating+a+npm+package
+https://stripe.com/docs/stripe-cli
+https://stripe.com/docs/testing#cards
+https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows#secret-manager
