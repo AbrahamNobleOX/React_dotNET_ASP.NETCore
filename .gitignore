@@ -476,3 +476,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 API/appsettings.json
+client/README_note.md
