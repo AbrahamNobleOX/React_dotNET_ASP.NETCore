@@ -1,4 +1,4 @@
-# ASP.NET Core Web API with React (TypeScript) Frontend
+# C#, .NET Core Web API with React (TypeScript) Frontend
 
 ## Overview
 
@@ -6,7 +6,7 @@ This project is a full-stack ecommerce web application that uses **ASP.NET Core*
 
 ### Technologies
 
-- **Backend**: C#, .NET, ASP.NET Core Web API
+- **Backend**: C#, .NET
   - RESTful API endpoints.
   - Integrated **Swagger** for API documentation and testing.
   - JWT-based authentication.
